@@ -8,6 +8,11 @@ HEADERS = {
 }
 
 def download_mp3(word, retries=3):
+    if not os.path.exists("pronunciations"):
+        os.makedirs("pronunciations")
+    
+    os.chdir("pronunciations")
+
     base_url = "https://dictionary.cambridge.org"
     search_url = f"{base_url}/us/dictionary/english/{word}"
     
@@ -51,10 +56,10 @@ def download_mp3(word, retries=3):
     print(f"Downloaded pronunciation for {word}")
 
 def main():
-    if not os.path.exists("pronunciations"):
-        os.makedirs("pronunciations")
+    # if not os.path.exists("pronunciations"):
+    #     os.makedirs("pronunciations")
     
-    os.chdir("pronunciations")
+    # os.chdir("pronunciations")
     
     while True:
         words = input("Enter vocabulary words separated by commas (or type 'q' to quit): ")

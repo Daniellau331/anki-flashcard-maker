@@ -1,4 +1,5 @@
 import requests
+from lib import download_pronunciations as mp3_download
 
 def invoke(action, params):
     return requests.post('http://localhost:8765', json={'action': action, 'params': params, 'version': 6}).json()
@@ -15,6 +16,9 @@ def add_flashcard(deck_name, front, back):
     deck_names = invoke('deckNames', {})
     if deck_name not in deck_names['result']:
         add_deck(deck_name)
+
+    # test the mp3 code
+    mp3_download.download_mp3("coffee")
 
     # Define the note (flashcard) to add
     note = {

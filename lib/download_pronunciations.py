@@ -13,6 +13,12 @@ def download_mp3(word, retries=3):
     
     os.chdir("pronunciations")
 
+    mp3_file_path = f"{word}.mp3"
+
+    if os.path.exists(mp3_file_path):
+        print(f"MP3 file already exists for {word}")
+        return
+
     base_url = "https://dictionary.cambridge.org"
     search_url = f"{base_url}/us/dictionary/english/{word}"
     
